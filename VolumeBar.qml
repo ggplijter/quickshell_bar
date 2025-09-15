@@ -85,6 +85,8 @@ Rectangle {
                 onReleased: {
                     var newVolume = parent.x_pos / volumeBarBackground.width;
                     Pipewire.defaultAudioSink.audio.volume = newVolume;
+
+                    play_volume_change_sound.running = true;
                 }
             }
 

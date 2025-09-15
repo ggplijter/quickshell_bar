@@ -21,6 +21,18 @@ ShellRoot {
         console.log("Volume changed to " + volume);
     }
 
+    Process {
+        id: proc_wofi
+        running: false
+        command: ["wofi", "--show", "drun"]
+    }
+
+    Process {
+        id: play_volume_change_sound
+        running: false
+        command: ["ffplay", "-nodisp", "-autoexit", "/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"]
+    }
+
     PanelWindow {
         id: window
         // FloatingWindow {
@@ -38,12 +50,6 @@ ShellRoot {
         MouseArea {
             anchors.fill: parent
             onClicked: bar.visible = true
-        }
-
-        Process {
-            id: proc_wofi
-            running: false
-            command: ["wofi", "--show", "drun"]
         }
 
         Bar {
